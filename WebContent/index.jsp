@@ -50,13 +50,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="images/banner1.png" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="images/banner2.png" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="images/banner3.png" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -75,13 +75,21 @@
 					<c:forEach var="product" items="${products}">
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img style="height:180px;width:auto;" src="${product.imageURL}" alt="">
+                            <img style="height:180px;width:auto;margin-top:20px" src="${product.imageURL}" alt="">
                             <div class="caption">
                                 <h5 class="pull-right">$${product.price}</h5>
                                 <h5><a href="#">${product.productname}</a>
                                 </h5>
                                 <p>${product.description}</p>
                             </div>
+                            
+                            <form action="Cart" method="post">
+                            	<div style="padding-left:20px;padding-right:20px;">
+                            		<input class="pull-left input-sm" type="number" value="1" min="1" max="99" name="quantity">
+                            		<input type="hidden" name="product" value="${product.productid}">
+                            		<input class="pull-right btn btn-sm btn-primary" type="submit" value="Add To Cart">
+                            	</div>
+                            </form>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
                                 <p>
@@ -103,9 +111,6 @@
         </div>
 
     </div>
-	
-	
-	
 	
 </body>
 </html>

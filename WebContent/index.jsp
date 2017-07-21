@@ -29,11 +29,12 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
+                <p class="lead">Quick Links</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Browse Products</a>
+                    <a href="#" class="list-group-item">My Profile</a>
+                    <a href="#" class="list-group-item">My Shopping Cart</a>
+                    <a href="#" class="list-group-item">My Order History</a>
                 </div>
             </div>
 
@@ -105,9 +106,9 @@
                     </c:forEach>
 
                 </div>
-
             </div>
 
+			
         </div>
 
     </div>

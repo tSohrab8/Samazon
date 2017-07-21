@@ -1,11 +1,17 @@
 
 
+import java.util.List;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import customTools.DbCart;
+import model.Shoppingcart;
 
 /**
  * Servlet implementation class Cart
@@ -27,9 +33,29 @@ public class Cart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String productid = request.getParameter("product");
-		String quantity = request.getParameter("quantity");
-		response.getWriter().append(quantity + " items of type " + productid);
+		
+		HttpSession session = request.getSession();
+		
+		Integer productid = Integer.parseInt(request.getParameter("product"));
+		Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+
+		Shoppingcart shop = new Shoppingcart();
+		shop.setProductid(productid);
+		shop.setQuantity(quantity);
+		shop.setUserid(3);
+		
+		DbCart.insert(shop);
+		
+		List<Shoppingcart> list = DbCart.listOfProducts();
+		
+		session.setAttribute("list", list);
+		
+		//response.getWriter().append(cart.printProducts());
+		response.sendRedirect(request.getContextPath() + "/cart.jsp");
+		
+		
+		
+		
 	}
 
 	/**

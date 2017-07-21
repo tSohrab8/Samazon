@@ -37,8 +37,10 @@ public class Start extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
+		//MyCart cart = new MyCart();
 		List<Product> p = DbProduct.listOfProducts();
 		session.setAttribute("products", p);
+		//session.setAttribute("cart", cart);
 		
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 		
